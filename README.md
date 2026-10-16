@@ -237,12 +237,14 @@ FROM
 
 ---
 
-## 🧠 Summary of Key Business Insights
+## 🧠 Key Insights & Recommendations
 
-1. **March 2017 converted better, not just attracted more traffic.** Transactions rose +35.5% from February to March while visits grew only +12.4%. The funnel confirms this: from January to March, add-to-cart rate climbed from 28.5% to 37.3% and purchase rate from 8.3% to 12.6%. Worth investigating what changed (promotion, seasonality, or traffic mix).
-2. **Google drives volume, direct drives revenue.** In June 2017, `(direct)` traffic accounted for roughly 78% of revenue across the top three sources, even though `google` sent a larger share of visits. Traffic volume and revenue contribution are not the same thing.
-3. **Engagement varies sharply by channel.** In July 2017, `(direct)` visitors bounced at 43.3%, while `youtube.com` visitors bounced at 66.7%, suggesting low-intent clicks. `reddit.com` had the lowest bounce rate (28.6%) but only 189 visits, making it a possible low-cost channel to test at scale.
-4. **Heavy browsing does not mean buying.** In June and July 2017, non-purchasers viewed 2.7–3.4x more pages than purchasers. Decisive buyers appear to navigate directly to what they want, so fast, low-friction paths to checkout may matter more than maximizing content depth.
-5. **Buyers come back to buy again.** Purchasing users averaged about 4.2 transactions in July 2017, so retention and remarketing to existing customers matter as much as acquisition.
-6. **Clear cross-sell opportunity.** Google Sunglasses was the most common co-purchase with the YouTube Men's Vintage Henley, with 20 units sold, nearly 3x the next product. This makes it a concrete bundling candidate at checkout or on the product page.
+## 🔎 Final Conclusion & Recommendations
 
+| # | Insight | Recommendation |
+|---|---------|----------------|
+| 1 | **Conversion Growth**: March 2017 had the highest traffic (69,931 visits), but transactions grew much faster than visits (+35.5% vs +12.4% compared with February). From January to March, add-to-cart rate rose from 28.47% to 37.29% and purchase rate from 8.31% to 12.64%. | **Replicate March's Success**: Review the campaigns, promotions and site changes from March 2017, turn what worked into a repeatable campaign plan, and track add-to-cart rate and purchase rate as monthly KPIs. |
+| 2 | **Traffic vs. Revenue**: **Google** brings the most visits (38,400 in July 2017), but **Direct** traffic generates most of the revenue: $97.3K in June 2017, about 78% of the top three sources, compared with only $18.8K from Google. | **Reallocate Marketing Budget by Revenue**: Shift **Google Ads** spend toward high-intent keywords that actually convert, and invest in brand awareness and loyalty programs to grow high-value **direct traffic**. |
+| 3 | **Bounce Rate by Channel**: **youtube.com** (66.73%) and **m.facebook.com** (64.28%) have the highest bounce rates, suggesting low-intent visitors. **reddit.com** has the lowest bounce rate (28.57%) but only 189 visits. | **Optimize Landing Pages for High-Bounce Channels**: Make YouTube and Facebook ad content match the landing page, improve page load speed, and run a small-budget test on **Reddit** before scaling it up. |
+| 4 | **Purchaser Behavior**: Purchasers view far fewer pages than non-purchasers (94 vs 317 in June 2017), make about 4.16 transactions each, and generate around $43.86 per session. They know what they want and come back to buy again. | **Simplify the Path to Purchase & Retain Buyers**: Improve site search and product filters, shorten the checkout process, and launch remarketing and post-purchase email campaigns to bring existing customers back. |
+| 5 | **Cross-Selling Opportunity**: Customers who bought the **"YouTube Men's Vintage Henley"** most often also bought **Google Sunglasses** (20 units), nearly 3x more than the next product. | **Launch Product Bundles**: Bundle the **"YouTube Men's Vintage Henley"** with **Google Sunglasses** at a small discount, and add a "Frequently bought together" section on product pages and at checkout. | Apply the same co-purchase analysis to other best-sellers to find more bundles. |
