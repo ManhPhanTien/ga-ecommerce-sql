@@ -29,10 +29,10 @@ The GA sample dataset stores each **session** as a row, with **hits** (page view
 
 **Query:**
 ```sql
-SELECT format_date("%Y%m",parse_date('%Y%m%d',date)) as month
+SELECT format_date('%Y%m',parse_date('%Y%m%d',date)) as month
       ,sum(totals.visits) as visits
       ,sum(totals.pageviews) as pageviews
-      ,sum(totals.transactions) as transacitons
+      ,sum(totals.transactions) as transactions
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
 WHERE _table_suffix between '0101' and '0331'
 GROUP BY month 
@@ -52,9 +52,9 @@ ORDER BY 1;
 SELECT trafficSource.`source`
       ,sum(totals.visits) as total_visits
       ,sum(totals.bounces) as total_no_of_bounces
-      ,ROUND(
-            100* SUM(totals.bounces)/sum(totals.visits)
-            ,3) as transactions
+      ,round(
+            100* sum(totals.bounces)/sum(totals.visits)
+            ,2) as bounce_rate
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
 GROUP BY trafficSource.`source`
 ORDER BY 2 DESC;
@@ -71,7 +71,7 @@ ORDER BY 2 DESC;
 **Query:**
 ```sql
 WITH week_out as 
-      (SELECT 'week' as time_type
+      (SELECT 'Week' as time_type
             ,format_date ('%Y%W',parse_date('%Y%m%d', date)) as week 
             ,trafficSource.`source`
             ,sum(product.productRevenue)/1000000 as revenue
@@ -82,13 +82,13 @@ WITH week_out as
 
 SELECT *
 FROM 
-      (SELECT 'month' as time_type
+      (SELECT 'Month' as time_type
             ,'201706' as time 
             ,source
             ,sum(revenue) as revenue
       FROM week_out
       GROUP BY 3
-      order by 4 DESC) as month_out 
+      ORDER BY 4 DESC) as month_out 
 UNION ALL 
 SELECT * 
 FROM week_out
@@ -105,7 +105,7 @@ ORDER BY revenue DESC;
 
 **Query:**
 ```sql
-WITH purchase AS 
+WITH purchase as
       (SELECT format_date('%Y%m',parse_date('%Y%m%d', date)) as month 
             ,sum(totals.pageviews) / count(distinct fullVisitorId) as avg_pageviews_purchase
       FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
@@ -142,7 +142,7 @@ INNER JOIN non_purchase USING (month);
 **Query:**
 ```sql
 SELECT '201707' as month
-      ,sum(totals.transactions)/count(distinct fullVisitorId) as Avg_total_transactions_per_user
+      ,sum(totals.transactions)/count(distinct fullVisitorId) as avg_total_transactions_per_user
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
 UNNEST (hits) hits,
 UNNEST (hits.product) product 
@@ -162,9 +162,7 @@ GROUP BY 1;
 **Query:**
 ```sql
 SELECT '201707' as month 
-      ,round (
-            (sum(product.productRevenue)/sum(totals.visits)) / 1000000
-      ,2) as avg_revenue_by_user_per_visit
+      ,(sum(product.productRevenue)/sum(totals.visits)) / 1000000 as avg_revenue_by_user_per_visit
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
 UNNEST (hits) hits,
 UNNEST (hits.product) product
@@ -220,7 +218,7 @@ SELECT *
       ,round(100*num_purchase/num_product_view,2) as purchase_rate
 FROM
   (SELECT format_date('%Y%m', parse_date('%Y%m%d',date)) as month
-        ,countif(hits.eCommerceAction.action_type = '2') as num_product_view
+        ,countif(hits.eCommerceAction.action_type = '2') as num_prodcut_view
         ,countif (hits.eCommerceAction.action_type = '3') as num_addtocart
         ,countif (hits.eCommerceAction.action_type = '6' and product.productRevenue is not null) as num_purchase
   FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
