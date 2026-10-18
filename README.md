@@ -32,7 +32,7 @@ The GA sample dataset stores each **session** as a row, with **hits** (page view
 SELECT format_date("%Y%m",parse_date('%Y%m%d',date)) as month
       ,sum(totals.visits) as visits
       ,sum(totals.pageviews) as pageviews
-      ,sum(totals.transactions) as transacitons
+      ,sum(totals.transactions) as transactions
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
 WHERE _table_suffix between '0101' and '0331'
 GROUP BY month 
@@ -54,7 +54,7 @@ SELECT trafficSource.`source`
       ,sum(totals.bounces) as total_no_of_bounces
       ,round(
             100* sum(totals.bounces)/sum(totals.visits)
-            ,3) as transactions
+            ,3) as bounce_rate
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
 GROUP BY trafficSource.`source`
 ORDER BY 2 DESC;
@@ -128,7 +128,8 @@ WITH purchase as
 
 SELECT *
 FROM purchase
-INNER JOIN non_purchase USING (month);
+INNER JOIN non_purchase USING (month)
+ORDER BY 1;
 ```
 
 **Result:**
